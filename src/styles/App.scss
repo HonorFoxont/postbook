@@ -1,0 +1,165 @@
+/* global */
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5em;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color: rgb(33, 80, 167);
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  ul{
+    display: flex;
+    justify-content: space-evenly;
+
+    li{
+      list-style: none;
+      margin: 0 10px;
+      cursor: pointer;
+
+      button:hover{
+        background-color: rgb(9, 52, 133);
+        border-radius: 0;
+      }
+      }
+    }
+  }
+
+
+
+/* Login page */
+
+.container {
+  background-color: #f4f4f4;
+  color: rgb(43, 43, 43);
+  text-align: center;
+  max-width: 350px;
+  margin: 80px auto;
+  border: 1px gray solid;
+  border-radius: 10px;
+  padding: 10px 20px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+.container h2 {
+  font-size: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: rgb(219, 219, 219);
+  border: 0;
+  font-size: 15px;
+  color: rgb(82, 82, 82);
+}
+
+.form-control input:focus {
+  outline: none;
+}
+
+.error {
+  background-color: rgb(250, 100, 100);
+  color: white;
+  display: none;
+}
+
+.button {
+  font-size: 15px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  color: white !important;
+  background-color: rgb(33, 80, 167) !important;
+  width: 100px;
+  cursor: pointer;
+}
+
+.home {
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  background-color: #d4ceced3;
+  padding: 20px;
+
+  h1{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.card{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  width: 90%;
+  padding: 20px;
+  margin: auto;
+  min-height: 400px;
+
+  .profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 8px 0;
+    img{
+      margin: 0 5px;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+    h4{
+      font-size: 14px;
+      margin: 0;
+    }
+    p{
+      margin: 0;
+    }
+
+  }
+
+.description{
+  font-size:16px;
+  font-weight: 100;
+}
+.image{
+  max-height: fit-content;
+  width: 90%;
+}
+
+}
+
+

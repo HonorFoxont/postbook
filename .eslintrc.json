@@ -1,0 +1,62 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "airbnb"
+  ],
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": [
+    "react",
+    "simple-import-sort",
+    "prettier"
+  ],
+  "rules": {
+    "import/order": "off",
+    "import/first": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "prettier/prettier": [
+      "error"
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
+    "semi": "warn",
+    "simple-import-sort/imports": "error",
+    "sort-imports": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": []
+      }
+    ],
+    "react/jsx-indent": [
+      1,
+      2
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  }
+}
