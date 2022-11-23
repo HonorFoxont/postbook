@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { authRef } from '../../services/firebase';
 import { UserProvider } from './UserProvider';
 
-const Providers = ({ children }) => {
+function Providers({ children }) {
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -18,6 +18,6 @@ const Providers = ({ children }) => {
       {children}
     </UserProvider>
   );
-};
+}
 
 export default Providers;

@@ -1,10 +1,13 @@
 import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { addDoc, collection, getFirestore } from '@firebase/firestore';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { authRef } from '../services/firebase';
 
-const Signup = () => {
+const firestore = getFirestore();
+const colRef = collection(firestore, 'user');
+function Signup() {
   const [cred, setCred] = useState({
     email: '',
     password: '',
@@ -34,7 +37,12 @@ const Signup = () => {
     }
 
     createUserWithEmailAndPassword(authRef, cred.email, cred.password)
-      .then(() => {
+      .then((res) => {
+        addDoc(authRef, {
+          email: res.auth.email,
+          id: res.uid,
+          name: res.displayName,
+        });
         navigate('/home');
         e.target.reset();
       })
@@ -55,9 +63,7 @@ const Signup = () => {
           <div className="form-control">
             <input
               type="email"
-              onChange={e =>
-                                setCred({ ...cred, email: e.target.value })
-                            }
+              onChange={(e) => setCred({ ...cred, email: e.target.value })}
               placeholder="Email"
               name="email"
               required
@@ -67,9 +73,7 @@ const Signup = () => {
             <input
               type="password"
               name="password"
-              onChange={e =>
-                                setCred({ ...cred, password: e.target.value })
-                            }
+              onChange={(e) => setCred({ ...cred, password: e.target.value })}
               placeholder="Password"
               required
             />
@@ -83,15 +87,17 @@ const Signup = () => {
             />
           </div>
           <div className="form-control">
-            <button className="button">SignUp</button>
+            <button className="button" type="button">SignUp</button>
           </div>
         </form>
         <p>
-          Already have an account? <Link href to="/Login">Login here</Link>
+          Already have an account?
+          {' '}
+          <Link href to="/Login">Login here</Link>
         </p>
       </div>
     </div>
   );
-};
+}
 
 export default Signup;

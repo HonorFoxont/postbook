@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import AuthLayout from '../layouts/auth-layout/AuthLayout';
 import { useUser } from '../lib/providers/UserProvider';
 
-const AuthRoute = ({ children }) => {
+function AuthRoute({ children }) {
   const user = useUser();
 
   if (!user) {
@@ -11,6 +11,6 @@ const AuthRoute = ({ children }) => {
   }
 
   return <Navigate to="/home" />;
-};
+}
 
 export default AuthRoute;

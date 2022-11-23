@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { authRef } from '../../services/firebase';
 
-const Login = () => {
+function Login() {
   const [cred, setCred] = useState({
     email: '',
     password: '',
@@ -53,9 +53,7 @@ const Login = () => {
               id="email"
               type="email"
               autoComplete="off"
-              onChange={e =>
-                                setCred({ ...cred, email: e.target.value })
-                            }
+              onChange={(e) => setCred({ ...cred, email: e.target.value })}
               name="email"
             />
           </div>
@@ -63,9 +61,7 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              onChange={e =>
-                                setCred({ ...cred, password: e.target.value })
-                            }
+              onChange={(e) => setCred({ ...cred, password: e.target.value })}
               name="password"
             />
           </div>
@@ -74,11 +70,13 @@ const Login = () => {
           </div>
         </form>
         <p>
-          Not a member? <Link to="/Signup">Signup</Link>
+          Not a member?
+          {' '}
+          <Link to="/Signup">Signup</Link>
         </p>
       </div>
     </div>
   );
-};
+}
 
 export default Login;

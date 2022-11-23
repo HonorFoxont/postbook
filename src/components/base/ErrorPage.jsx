@@ -1,7 +1,7 @@
 import AuthLayout from '../../layouts/auth-layout/AuthLayout';
 import MainLayout from '../../layouts/main-layout/MainLayout';
 
-const ErrorPage = ({ auth }) => {
+function ErrorPage({ auth }) {
   const layout = AuthLayout;
   if (auth) {
     const layout = AuthLayout;
@@ -15,6 +15,6 @@ const ErrorPage = ({ auth }) => {
       </div>
     </layout>
   );
-};
+}
 
 export default ErrorPage;
