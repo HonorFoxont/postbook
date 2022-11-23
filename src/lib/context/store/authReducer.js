@@ -1,5 +1,5 @@
 const initState = {};
 
-const authReducer = (state = initState, action) => state;
+const authReducer = (action, state = initState) => state;
 
 export default authReducer;
