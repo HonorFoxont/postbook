@@ -1,12 +1,16 @@
 import { createUserWithEmailAndPassword } from '@firebase/auth';
-import { addDoc, collection, getFirestore } from '@firebase/firestore';
+import {
+  addDoc,
+  collection, doc, getFirestore, setDoc,
+} from '@firebase/firestore';
 import { useState } from 'react';
+import { useDispatch as dispach } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { authRef } from '../services/firebase';
+import app, { authRef } from '../services/firebase';
 
-const firestore = getFirestore();
-const colRef = collection(firestore, 'user');
+const db = getFirestore(app);
+const colRef = collection(db, 'user');
 function Signup() {
   const [cred, setCred] = useState({
     email: '',
@@ -38,11 +42,19 @@ function Signup() {
 
     createUserWithEmailAndPassword(authRef, cred.email, cred.password)
       .then((res) => {
-        addDoc(authRef, {
-          email: res.auth.email,
-          id: res.uid,
-          name: res.displayName,
+        // setDoc(doc(firestore, 'user', res.user.uid), {
+        //   email: res.user.email,
+        //   id: res.user.uid,
+        //   name: res.user.displayName ? res.user.displayName : '',
+        // });
+        addDoc(colRef, {
+          email: res.user.email,
+          id: res.user.uid,
+          name: res.user.displayName ? res.user.displayName : '',
+        }).then((user) => {
+          dispach({ type: 'ADD-USER', payload: user });
         });
+
         navigate('/home');
         e.target.reset();
       })
@@ -87,7 +99,7 @@ function Signup() {
             />
           </div>
           <div className="form-control">
-            <button className="button" type="button">SignUp</button>
+            <button className="button" type="submit">SignUp</button>
           </div>
         </form>
         <p>
