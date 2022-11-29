@@ -1,5 +1,10 @@
 const initState = {};
 
-const authReducer = (action, state = initState) => state;
+const authReducer = (action, state = initState) => {
+  switch (action.type) {
+    case 'ADD-USER':
+      return initState = action.payload;
+  }
+};
 
 export default authReducer;

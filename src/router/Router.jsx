@@ -11,7 +11,7 @@ import ProtectedRoute from './ProtectedRoute';
 
 function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="postbook">
       <Routes>
         <Route path="/login" element={<AuthRoute><Login /></AuthRoute>} />
         <Route path="/signup" element={<AuthRoute><Signup /></AuthRoute>} />

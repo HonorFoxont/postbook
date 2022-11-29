@@ -54,7 +54,9 @@ function Login() {
               type="email"
               autoComplete="off"
               onChange={(e) => setCred({ ...cred, email: e.target.value })}
+              value={cred.email}
               name="email"
+              required
             />
           </div>
           <div className="form-control">
@@ -63,6 +65,7 @@ function Login() {
               type="password"
               onChange={(e) => setCred({ ...cred, password: e.target.value })}
               name="password"
+              required
             />
           </div>
           <div className="form-control">
