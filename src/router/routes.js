@@ -1,6 +1,6 @@
 import AuthLayout from '../layouts/auth-layout/AuthLayout';
 import MainLayout from '../layouts/main-layout/MainLayout';
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import Login from '../pages/login/Login';
 import Signup from '../pages/Signup';
 

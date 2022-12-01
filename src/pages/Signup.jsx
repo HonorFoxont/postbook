@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
 import {
   doc, setDoc,
 } from '@firebase/firestore';
@@ -39,16 +39,17 @@ function Signup() {
     }
 
     createUserWithEmailAndPassword(authRef, cred.email, cred.password)
+      .then((user) => updateProfile(user, {
+        displayName: e.target.userName.value,
+      }))
       .then((res) => {
         setDoc(doc(db, 'user', res.user.uid), {
           email: res.user.email,
           id: res.user.uid,
-          name: res.user.displayName ? res.user.displayName : '',
-        }).then((user) => user.user.updateProfile({
-          displayName: '',
+          name: res.user.displayName,
         }).then((data) => {
           dispach({ type: 'ADD-USER', payload: data });
-        }))
+        })
           .catch((err) => console.log(err.messege));
         navigate('/home');
         e.target.reset();
@@ -65,7 +66,7 @@ function Signup() {
         <form onSubmit={handleSubmit}>
           <div className="form-control error" id="Serror" />
           <div className="form-control">
-            <input type="text" onChange={(e) => setCred({ ...cred, name: e.target.value })} placeholder="UserName" name="userName" required />
+            <input type="text" onChange={(e) => setCred({ ...cred, name: e.target.value })} placeholder="UserName" name="userName" id="username" required />
           </div>
           <div className="form-control">
             <input
