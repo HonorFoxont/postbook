@@ -1,18 +1,16 @@
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import {
-  addDoc,
-  collection, doc, getFirestore, setDoc,
+  doc, setDoc,
 } from '@firebase/firestore';
 import { useState } from 'react';
 import { useDispatch as dispach } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import app, { authRef } from '../services/firebase';
+import { authRef, database as db } from '../services/firebase';
 
-const db = getFirestore(app);
-const colRef = collection(db, 'user');
 function Signup() {
   const [cred, setCred] = useState({
+    name: '',
     email: '',
     password: '',
   });
@@ -42,19 +40,16 @@ function Signup() {
 
     createUserWithEmailAndPassword(authRef, cred.email, cred.password)
       .then((res) => {
-        // setDoc(doc(firestore, 'user', res.user.uid), {
-        //   email: res.user.email,
-        //   id: res.user.uid,
-        //   name: res.user.displayName ? res.user.displayName : '',
-        // });
-        addDoc(colRef, {
+        setDoc(doc(db, 'user', res.user.uid), {
           email: res.user.email,
           id: res.user.uid,
           name: res.user.displayName ? res.user.displayName : '',
-        }).then((user) => {
-          dispach({ type: 'ADD-USER', payload: user });
-        });
-
+        }).then((user) => user.user.updateProfile({
+          displayName: '',
+        }).then((data) => {
+          dispach({ type: 'ADD-USER', payload: data });
+        }))
+          .catch((err) => console.log(err.messege));
         navigate('/home');
         e.target.reset();
       })
@@ -68,10 +63,10 @@ function Signup() {
         <h2>Signup</h2>
         <p>Please fill in this form to create an account!</p>
         <form onSubmit={handleSubmit}>
-          {/* <div className="form-control">
-            <input type="text" placeholder="UserName" required />
-          </div> */}
           <div className="form-control error" id="Serror" />
+          <div className="form-control">
+            <input type="text" onChange={(e) => setCred({ ...cred, name: e.target.value })} placeholder="UserName" name="userName" required />
+          </div>
           <div className="form-control">
             <input
               type="email"
