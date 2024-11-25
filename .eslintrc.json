@@ -11,7 +11,7 @@
     "jest": true,
     "browser": true
   },
-  
+
   "parserOptions": {
     "ecmaVersion": 9,
     "sourceType": "module",
@@ -27,6 +27,7 @@
     "prettier"
   ],
   "rules": {
+    "linebreak-style":0,
     "import/order": "off",
     "import/first": "off",
     "import/no-extraneous-dependencies": "off",
