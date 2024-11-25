@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/postbook/static/css/main.09c8d987.css",
+    "main.js": "/postbook/static/js/main.008bfcb2.js",
+    "static/js/787.6efd6f56.chunk.js": "/postbook/static/js/787.6efd6f56.chunk.js",
+    "index.html": "/postbook/index.html",
+    "main.09c8d987.css.map": "/postbook/static/css/main.09c8d987.css.map",
+    "main.008bfcb2.js.map": "/postbook/static/js/main.008bfcb2.js.map",
+    "787.6efd6f56.chunk.js.map": "/postbook/static/js/787.6efd6f56.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09c8d987.css",
+    "static/js/main.008bfcb2.js"
+  ]
+}
